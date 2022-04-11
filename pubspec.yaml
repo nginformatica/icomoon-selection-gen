@@ -16,6 +16,6 @@ dev_dependencies:
   recase: ^4.0.0
   dart_style: ^2.2.2
   code_builder: ^4.1.0
-  build_runner: ^2.1.8
+  build_runner: ^2.1.7
   build_test: ^2.1.5
 
