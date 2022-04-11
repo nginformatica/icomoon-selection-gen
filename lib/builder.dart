@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:build/build.dart';
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
-import 'package:meta/meta.dart';
 import 'package:recase/recase.dart';
 
 import 'models.dart';
@@ -18,8 +17,8 @@ Builder genFromJson(BuilderOptions options) {
 
 class GeneratorOptions {
   GeneratorOptions({
-    @required this.fontName,
-    @required this.selectionJsonPath,
+    required this.fontName,
+    required this.selectionJsonPath,
   });
 
   factory GeneratorOptions.fromOptions(BuilderOptions options) {
@@ -31,13 +30,13 @@ class GeneratorOptions {
     );
 
     return GeneratorOptions(
-      fontName: config['font_name'] as String,
-      selectionJsonPath: config['selection_json_path'] as String,
+      fontName: config['font_name'] as String?,
+      selectionJsonPath: config['selection_json_path'] as String?,
     );
   }
 
-  final String fontName;
-  final String selectionJsonPath;
+  final String? fontName;
+  final String? selectionJsonPath;
 }
 
 class IcomoonBuilder implements Builder {
@@ -56,8 +55,8 @@ class IcomoonBuilder implements Builder {
 
     final fields = selection.icons.map((icon) {
       final props = icon.properties;
-      final code = props.code.toRadixString(16);
-      final name = ReCase(props.name).snakeCase;
+      final code = props.code!.toRadixString(16);
+      final name = ReCase(props.name!).snakeCase;
 
       return Field((b) => b
         ..name = name
@@ -80,7 +79,7 @@ class IcomoonBuilder implements Builder {
       ..fields.addAll(fields));
     final content = Library(
       (b) => b.body..add(icomoonClass),
-    ).accept(DartEmitter(Allocator()));
+    ).accept(DartEmitter(allocator: Allocator()));
 
     await buildStep.writeAsString(
       buildStep.inputId.changeExtension('.dart'),

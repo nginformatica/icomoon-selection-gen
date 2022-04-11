@@ -1,8 +1,6 @@
-import 'package:meta/meta.dart';
-
 class SelectionModel {
   SelectionModel({
-    @required this.icons,
+    required this.icons,
   });
 
   factory SelectionModel.fromJson(Map<String, dynamic> json) {
@@ -18,7 +16,7 @@ class SelectionModel {
 }
 
 class IcomoonIcon {
-  IcomoonIcon({@required this.properties});
+  IcomoonIcon({required this.properties});
 
   factory IcomoonIcon.fromJson(Map<String, dynamic> json) {
     final properties = json['properties'] as Map<String, dynamic>;
@@ -30,15 +28,15 @@ class IcomoonIcon {
 }
 
 class IconProperties {
-  IconProperties({@required this.name, @required this.code});
+  IconProperties({required this.name, required this.code});
 
   factory IconProperties.fromJson(Map<String, dynamic> json) {
     return IconProperties(
-      name: json['name'] as String,
-      code: json['code'] as int,
+      name: json['name'] as String?,
+      code: json['code'] as int?,
     );
   }
 
-  final String name;
-  final int code;
+  final String? name;
+  final int? code;
 }

@@ -5,17 +5,17 @@ author: Gabriel Rohden
 homepage:
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  build: ^1.1.4
-  build_config: ^0.4.0
+  build: ^2.2.1
+  build_config: ^1.0.0
 
 dev_dependencies:
-  meta: ^1.1.7
-  recase: ^3.0.0
-  dart_style: ^1.0.0
-  code_builder: ^3.3.0
-  build_runner: ^1.5.0
-  build_test: ^0.10.7+3
+  meta: ^1.7.0
+  recase: ^4.0.0
+  dart_style: ^2.2.2
+  code_builder: ^4.1.0
+  build_runner: ^2.1.8
+  build_test: ^2.1.5
 
